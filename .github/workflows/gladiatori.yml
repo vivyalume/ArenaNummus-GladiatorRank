@@ -1,5 +1,5 @@
 # Esecuzione classifica ArenaNummus
-name: Gladiatore del Giornoname: Gladiatore del Giorno
+name: Gladiatore del Giorno
 
 on:
   schedule:

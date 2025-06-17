@@ -1,20 +1,22 @@
-# Test per sbloccare run manuale
-# Attivazione iniziale
-# Esecuzione classifica ArenaNummus
+# Attiva il workflow per calcolare la classifica dei Gladiatori di ArenaNummus
 name: Gladiatore del Giorno
+
 on:
+  # Esecuzione automatica ogni giorno alle 22:00 (ora italiana = 20:00 UTC)
   schedule:
-    - cron: '0 20 * * *'  # Ogni giorno alle 22:00 ora italiana (20:00 UTC)
+    - cron: '0 20 * * *'
+  # Permette l'esecuzione manuale via GitHub Actions
   workflow_dispatch:
-  
+
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Clona il repo
+      - name: Clona il repository
         uses: actions/checkout@v3
 
-      - name: Installa Python e dipendenze
+      - name: Installa Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.10'
@@ -23,10 +25,10 @@ jobs:
         run: |
           pip install pandas pillow
 
-      - name: Esegui lo script
+      - name: Esegui lo script Python
         run: python gladiatori.py
 
-      - name: Salva risultati
+      - name: Commit dei risultati
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "Aggiornamento classifica giornaliera"

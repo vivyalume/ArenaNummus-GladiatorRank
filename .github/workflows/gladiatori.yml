@@ -5,7 +5,6 @@ on:
   schedule:
     - cron: '0 20 * * *'  # Ogni giorno alle 22:00 ora italiana (20:00 UTC)
   workflow_dispatch:
-
 jobs:
   build:
     runs-on: ubuntu-latest
